@@ -1,0 +1,801 @@
+<Doctype html>
+<html>
+<head>
+<title> Git-Books </title>
+
+
+
+</head>
+
+<style>
+body{
+ font-family: Georgia, 'Lato' ;
+}
+h1{
+        font-size: 20px;
+      }
+
+h2{
+        font-size: 20px;
+      }
+p{
+font-size: 14px;
+      }
+</style>
+<body>
+
+
+<style>
+table {
+  font-family: Georgia, 'Lato';
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2> Installation </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  <tr>
+
+    <td bgcolor="#00FF00">$ sudo dnf install git-all</td>
+    <td>If you want to install the basic Git tools on Linux via a binary installer, you can generally do so through the package management tool that comes with your distribution.</td>
+ 	<td>Linux</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FF00">$ git --version</td>
+    <td>There are several ways to install Git on a Mac. The easiest is probably to install the Xcode Command Line Tools. On Mavericks (10.9) or above you can do this simply by trying to run git from the Terminal the very first time.</td>
+    <td>MAC</td>
+  </tr>
+
+ 
+  
+</table>
+
+<h2> Getting started </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  <tr>
+
+    <td bgcolor="#00FF00">$ git config</td>
+    <td>
+    	<p>1./etc/gitconfig file: Contains values applied to every user on the system and all their repositories. If you pass the option --system to git config, it reads and writes from this file specifically. (Because this is a system configuration file, you would need administrative or superuser privilege to make changes to it.</p>
+    	
+    	<p>2.~/.gitconfig or ~/.config/git/config file: Values specific personally to you, the user. You can make Git read and write to this file specifically by passing the --global option, and this affects all of the repositories you work with on your system.</p>
+
+    	<p>3.config file in the Git directory (that is, .git/config) of whatever repository you’re currently using: Specific to that single repository. You can force Git to read from and write to this file with the --local option, but that is in fact the default. (Unsurprisingly, you need to be located somewhere in a Git repository for this option to work properly.</p>
+
+    	<p>Each level overrides values in the previous level, so values in .git/config trump those in /etc/gitconfig.
+
+		On Windows systems, Git looks for the .gitconfig file in the $HOME directory (C:\Users\$USER for most people). It also still looks for /etc/gitconfig, although it’s relative to the MSys root, which is wherever you decide to install Git on your Windows system when you run the installer. If you are using version 2.x or later of Git for Windows, there is also a system-level config file at C:\Documents and Settings\All Users\Application Data\Git\config on Windows XP, and in C:\ProgramData\Git\config on Windows Vista and newer. This config file can only be changed by git config -f <file> as an admin.</p>
+
+    </td>
+ 	<td>MAC</td>
+  </tr>
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ git config --global user.name "John Doe" </p>
+		<p>$ git config --global user.email johndoe@example.com</p>
+    </td>
+    <td>The first thing you should do when you install Git is to set your user name and email address. This is important because every Git commit uses this information, and it’s immutably baked into the commits you start creating.</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git config --global core.editor emacs</td>
+    <td>Emac editor.</td>
+    <td>MAC</td>
+  </tr>
+
+ <tr>
+    <td bgcolor="#00FF00">$ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -nosession"</td>
+    <td>In the case of Notepad++, a popular programming editor, you are likely to want to use the 32-bit version, since at the time of writing the 64-bit version doesn’t support all plug-ins. If you are on a 32-bit Windows system, or you have a 64-bit editor on a 64-bit system, you’ll type something like this:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git config --global core.editor "'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -nosession"</td>
+    <td>If you have a 32-bit editor on a 64-bit system, the program will be installed in C:\Program Files (x86):.</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git config --list</td>
+    <td>If you want to check your configuration.</td>
+    <td>all</td>
+  </tr>
+  
+</table>
+
+<h2> Help </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">$ git add -h</td>
+    <td>Help required.</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git help config</td>
+    <td>you can get the manpage help for the git config command by running.</td>
+    <td>MAC</td>
+  </tr>
+
+
+  
+</table>
+
+<h2> Git Basics </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">$ cd /home/user/my_project</td>
+    <td>If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project’s directory. If you’ve never done this, it looks a little different depending on which system you’re running:</td>
+    <td>Linux</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ cd /Users/user/my_project</td>
+    <td>If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project’s directory. If you’ve never done this, it looks a little different depending on which system you’re running:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ cd /c/user/my_project</td>
+    <td>If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project’s directory. If you’ve never done this, it looks a little different depending on which system you’re running:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git init</td>
+    <td>This creates a new subdirectory named .git that contains all of your necessary repository files — a Git repository skeleton. At this point, nothing in your project is tracked yet. (See Git Internals for more information about exactly what files are contained in the .git directory you just created.).</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ git add *.c</p>
+    	<p>$ git add LICENSE</p>
+    	<p>$ git commit -m 'initial project version'</p>
+    </td>
+    <td>If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a git commit.</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git clone https://github.com/libgit2/libgit2</td>
+    <td>That creates a directory named libgit2, initializes a .git directory inside it, pulls down all the data for that repository, and checks out a working copy of the latest version. If you go into the new libgit2 directory that was just created, you’ll see the project files in there, ready to be worked on or used.</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git clone https://github.com/libgit2/libgit2 mylibgit</td>
+    <td>If you want to clone the repository into a directory named something other than libgit2, you can specify the new directory name as an additional argument:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git@github.com:mizan-r/Git-Commands.git</td>
+    <td>Git has a number of different transfer protocols you can use. The previous example uses the https:// protocol, but you may also see git:// or user@server:path/to/repo.git, which uses the SSH transfer protocol.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ git config --global alias.co checkout</p>
+    	<p>$ git config --global alias.br branch</p>
+    	<p>$ git config --global alias.ci commit</p>
+    	<p>$ git config --global alias.st status</p>
+    </td>
+    <td>Git doesn’t automatically infer your command if you type it in partially. If you don’t want to type the entire text of each of the Git commands, you can easily set up an alias for each command using git config. Here are a couple of examples you may want to set up:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">bisect</td>
+    <td>Find by binary search the change that introduced a bug.</td>
+    <td>all</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">rebase</td>
+    <td>Forward-port local commits to the updated upstream head</td>
+    <td>all</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">fetch</td>
+    <td>Download objects and refs from another repository</td>
+    <td>all</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">grep</td>
+    <td>Print lines matching a pattern.</td>
+    <td>all</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">mv</td>
+    <td>Move or rename a file, a directory, or a symlink.</td>
+    <td>all</td>
+  </tr>
+
+
+  <tr>
+    <td bgcolor="#00FF00">show</td>
+    <td>Show various types of objects.</td>
+    <td>all</td>
+  </tr>
+  
+</table>
+
+<h2> Basic Snapshotting </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">git status</td>
+    <td>Check status.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git add [file-name.txt]</td>
+    <td>Add a file to the staging area.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git add -A</td>
+    <td>Add all new and changed files to the staging area.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git commit -m "[commit message]"</td>
+    <td>Commit changes.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git rm -r [file-name.txt]</td>
+    <td>Remove a file (or folder)</td>
+    <td>Windows</td>
+  </tr>
+
+
+  
+</table>
+
+<h2> Branching & Merging </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">git branch</td>
+    <td>List branches (the asterisk denotes the current branch).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git branch -a</td>
+    <td>List all branches (local and remote).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git branch [branch name]</td>
+    <td>Create a new branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git branch -d [branch name]</td>
+    <td>Delete a branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git push origin --delete [branchName]</td>
+    <td>Delete a remote branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git checkout -b [branch name]</td>
+    <td>Create a new branch and switch to it.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git checkout -b [branch name] origin/[branch name]</td>
+    <td>Clone a remote branch and switch to it.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git checkout [branch name]</td>
+    <td>Switch to a branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git checkout -</td>
+    <td>Switch to the branch last checked out.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git checkout -- [file-name.txt]</td>
+    <td>Discard changes to a file.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git merge [branch name]</td>
+    <td>Merge a branch into the active branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git merge [source branch] [target branch]</td>
+    <td>Merge a branch into a target branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git stash</td>
+    <td>Stash changes in a dirty working directory.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git stash clear</td>
+    <td>Remove all stashed entries.</td>
+    <td>common</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git add -i</td>
+    <td>
+    	<p>If you run git add with the -i or --interactive option, Git enters an interactive shell mode, displaying something like this:</p>
+    	<p>staged     unstaged path</p>
+    	<p>1:    unchanged        +0/-1 TODO</p>
+    	<p> 2:    unchanged        +1/-1 index.html</p>
+    	<p>3:    unchanged        +5/-1 lib/simplegit.rb</p>
+    	<p>*** Commands ***</p>
+    	<p>1: [s]tatus     2: [u]pdate      3: [r]evert     4: [a]dd untracked</p>
+    	<p>5: [p]atch      6: [d]iff        7: [q]uit       8: [h]elp</p>
+    	<p>What now></p>
+    </td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>What now> u</p>
+    	<p>staged     unstaged path</p>
+    	<p>1:    unchanged        +0/-1 TODO</p>
+    	<p>2:    unchanged        +1/-1 index.html</p>
+    	<p>3:    unchanged        +5/-1 lib/simplegit.rb</p>
+    	<p>Update>> </p>
+    </td>
+    <td>
+    	<p>If you type u or 2 (for update) at the What now> prompt, you’re prompted for which files you want to stage:</p>
+    	
+    	
+    </td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>Update>> 1,2</p>
+    </td>
+    <td>
+    	<p>To stage the TODO and index.html files, you can type the numbers:</p>
+    	<p>Result</p>
+    	<p>Update>></p>
+		<p>updated 2 paths</p>
+		<p>*** Commands ***</p>
+		<p>1: [s]tatus     2: [u]pdate      3: [r]evert     4: [a]dd untracked</p>
+		<p> 5: [p]atch      6: [d]iff        7: [q]uit       8: [h]elp</p>
+    </td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">What now> r</td>
+    <td>Now you can see that the TODO and index.html files are staged and the simplegit.rb file is still unstaged. If you want to unstage the TODO file at this point, you use the r or 3 (for revert) option:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">What now> p</td>
+    <td><p>It’s also possible for Git to stage certain parts of files and not the rest. For example, if you make two changes to your simplegit.rb file and want to stage one of them and not the other, doing so is very easy in Git.</p> <p>From the same interactive prompt explained in the previous section, type p or 5 (for patch).</p> <p>Git will ask you which files you would like to partially stage; then, for each section of the selected files, it will display hunks of the file diff and ask if you would like to stage them, one by one:</p></td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>Stage this hunk [y,n,a,d,/,j,J,g,e,?]?</p>
+    	<p>y - stage this hunk</p>
+    	<p>n - do not stage this hunk</p>
+    	<p>a - stage this and all the remaining hunks in the file</p>
+		<p>d - do not stage this hunk nor any of the remaining hunks in the file</p>
+		<p>g - select a hunk to go to</p>
+		<p>/ - search for a hunk matching the given regex</p>
+		<p>j - leave this hunk undecided, see next undecided hunk</p>
+		<p>J - leave this hunk undecided, see next hunk</p>
+		<p>k - leave this hunk undecided, see previous undecided hunk</p>
+		<p>K - leave this hunk undecided, see previous hunk</p>
+		<p>s - split the current hunk into smaller hunks</p>
+		<p>e - manually edit the current hunk</p>
+		<p>? - print help</p>
+
+    </td>
+    <td>
+		You have a lot of options at this point. Typing ? shows a list of what you can do:
+    </td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git commit --amend</td>
+    <td>If you simply want to modify your last commit message, that’s easy</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git rebase -i HEAD~3</td>
+    <td> if you want to change the last three commit messages, or any of the commit messages in that group, you supply as an argument to git rebase -i</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ git filter-branch --commit-filter '</p>
+    	<p> if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];</p>
+    	<p>then</p>
+    	<p>GIT_AUTHOR_NAME="Scott Chacon";</p>
+		<p>GIT_AUTHOR_EMAIL="schacon@example.com";</p>
+		<p>git commit-tree "$@";</p>
+		<p>else</p>
+		<p>git commit-tree "$@";</p>
+		<p>fi' HEAD</p>
+		<p>k - leave this hunk undecided, see previous undecided hunk</p>
+		<p>K - leave this hunk undecided, see previous hunk</p>
+		<p>s - split the current hunk into smaller hunks</p>
+		<p>e - manually edit the current hunk</p>
+		<p>? - print help</p>
+
+    </td>
+    <td>
+		Changing Email Addresses Globally
+    </td>
+    <td>MAC</td>
+  </tr>
+	  
+</table>
+
+<h2> Sharing & Updating Projects </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">git push origin [branch name]</td>
+    <td>Push a branch to your remote repository.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git push -u origin [branch name]</td>
+    <td>Push changes to remote repository (and remember the branch).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git push</td>
+    <td>Push changes to remote repository (remembered branch).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git push origin --delete [branch name]</td>
+    <td>Delete a remote branch.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git pull</td>
+    <td>Update local repository to the newest commit</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git pull origin [branch name]</td>
+    <td>Pull changes from remote repository</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git remote add origin ssh://git@github.com/[username]/[repository-name].git</td>
+    <td>Add a remote repository</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git remote set-url origin ssh://git@github.com/[username]/[repository-name].git</td>
+    <td>Set a repository's origin branch to SSH</td>
+    <td>Windows</td>
+  </tr>
+
+
+  
+</table>
+
+<h2> Inspection & Comparison </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">git log</td>
+    <td>View changes.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git log --summary</td>
+    <td>View changes (detailed).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">git diff [source branch] [target branch]</td>
+    <td>Preview changes before merging.</td>
+    <td>Windows</td>
+  </tr>
+  
+</table>
+
+<h2> Common options to git log </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">-p</td>
+    <td>Show the patch introduced with each commit.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--stat</td>
+    <td>Show statistics for files modified in each commit.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--shortstat</td>
+    <td>Display only the changed/insertions/deletions line from the --stat command.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--name-only</td>
+    <td>Show the list of files modified after the commit information.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--name-status</td>
+    <td>Show the list of files affected with added/modified/deleted information as well.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--abbrev-commit</td>
+    <td>Show only the first few characters of the SHA-1 checksum instead of all 40.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--relative-date</td>
+    <td>Display the date in a relative format (for example, “2 weeks ago”) instead of using the full date format.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--graph</td>
+    <td>Display an ASCII graph of the branch and merge history beside the log output.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--pretty</td>
+    <td>Show commits in an alternate format. Options include oneline, short, full, fuller, and format (where you specify your own format).</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--oneline</td>
+    <td>Shorthand for --pretty=oneline --abbrev-commit used together.</td>
+    <td>Windows</td>
+  </tr>
+  
+</table>
+
+<h2> Options to limit the output of git log </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">-<<n>n></td>
+    <td>Show only the last n commits.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--since, --after</td>
+    <td>Limit the commits to those made after the specified date.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--until, --before</td>
+    <td>Limit the commits to those made before the specified date.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--author</td>
+    <td>Only show commits in which the author entry matches the specified string.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--committer</td>
+    <td>Only show commits in which the committer entry matches the specified string.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">--grep</td>
+    <td>Only show commits with a commit message containing the string.</td>
+    <td>Windows</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">-S</td>
+    <td>Only show commits adding or removing code matching the string.</td>
+    <td>Windows</td>
+  </tr>
+
+  
+</table>
+
+<h2> Git on the Server - The Protocols </h2>
+
+<table>
+  <tr>
+    <th>Command</th>
+    <th>Description</th>
+    <th>OS</th>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ git clone /srv/git/project.git</p>
+    	or
+    	<p>$ git clone file:///srv/git/project.git</p>
+    </td>
+    <td>If you have a shared mounted filesystem, then you can clone, push to, and pull from a local file-based repository. To clone a repository like this, or to add one as a remote to an existing project, use the path to the repository as the URL. For example, to clone a local repository, you can run something like this:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ git daemon --reuseaddr --base-path=/srv/git/ /srv/git/</td>
+    <td>the Git protocol is relatively easy to set up. Basically, you need to run this command in a daemonized manner:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">$ initctl start local-git-daemon</td>
+    <td>When you restart your machine, your Git daemon will start automatically and respawn if it goes down. To get it running without having to reboot, you can run this:</td>
+    <td>MAC</td>
+  </tr>
+
+  <tr>
+    <td bgcolor="#00FF00">
+    	<p>$ cd /path/to/project.git</p>
+    	<p>$ touch git-daemon-export-ok</p>
+    </td>
+    <td>Next, you have to tell Git which repositories to allow unauthenticated Git server-based access to. You can do this in each repository by creating a file named git-daemon-export-ok.</td>
+    <td>MAC</td>
+  </tr>
+
+  
+</table>
+
+
+
+
+<p> &copy GitBook & joshnh </p>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
